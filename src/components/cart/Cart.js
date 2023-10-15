@@ -17,17 +17,19 @@ function Cart({ onClose }) {
 
     async function handleCheckout() {
         try {
-            const response = await axiosClient.post('/orders', {
-                products: cart
-            });
-    
-            const stripe = await loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`);
-            const data = await stripe.redirectToCheckout({
-                sessionId: response.data.stripeId
-            })
+          const response = await axiosClient.post("/orders", {
+            products: cart,
+          });
 
-            console.log('stripe data', data);
+          const stripe = await loadStripe(
+            `${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}`
+          );
+          const data = await stripe.redirectToCheckout({
+            sessionId: response.data.stripeId,
+          });
 
+          console.log("stripe data", data);
+          
         } catch (error) {
             console.log(error);
         }
