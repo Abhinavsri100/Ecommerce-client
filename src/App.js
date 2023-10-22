@@ -28,8 +28,6 @@ function App() {
           <Route path="/payments/:id" element={<Payments />} />
         </Routes>
       </main>
-      {/* <Payments /> */}
-      {/* <Payments /> */}
       <Footer />
     </div>
   );
